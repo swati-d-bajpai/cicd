@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Swati Bajpai</title>
+  <meta name="description" content="Personal landing page for Swati Bajpai" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* —— CSS Reset (light) —— */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; color: #101314; background: #0b0f14; }
+
+    /* —— Theme variables —— */
+    :root {
+      --bg: #0b0f14;
+      --card: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.15);
+      --text: #e9edf1;
+      --muted: #b8c0cc;
+      --accent1: #7c3aed; /* violet */
+      --accent2: #06b6d4; /* cyan */
+      --glow: 0 10px 40px rgba(124, 58, 237, .35), 0 6px 20px rgba(6, 182, 212, .25);
+    }
+
+    body { background: radial-gradient(1200px 800px at 10% 10%, rgba(124,58,237,.18), transparent 60%),
+                        radial-gradient(900px 700px at 90% 20%, rgba(6,182,212,.18), transparent 60%),
+                        linear-gradient(180deg, #0b0f14, #0b0f14 60%); color: var(--text); overflow-x: hidden; }
+
+    /* —— Decorative blurred blobs —— */
+    .blob { position: absolute; filter: blur(64px); opacity: .35; transform: translate(-50%, -50%); pointer-events: none; }
+    .blob.one { width: 520px; height: 520px; left: 10%; top: 12%; background: radial-gradient(circle, #7c3aed, transparent 60%); }
+    .blob.two { width: 560px; height: 560px; left: 85%; top: 18%; background: radial-gradient(circle, #06b6d4, transparent 60%); }
+
+    /* —— Layout —— */
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .brand .logo { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--accent1), var(--accent2)); box-shadow: var(--glow); display:flex; align-items:center; justify-content:center; font-weight:700; }
+    .brand span { font-weight: 700; letter-spacing: .4px; }
+
+    nav a { color: var(--muted); text-decoration: none; margin-left: 14px; padding: 8px 12px; border-radius: 999px; border: 1px solid transparent; transition: .2s ease; }
+    nav a:hover { color: var(--text); border-color: var(--border); background: rgba(255,255,255,0.04); }
+
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; padding: 64px 0 40px; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; text-align: center; } .cta { justify-content: center; } }
+
+    .title { font-family: 'Playfair Display', serif; font-size: clamp(40px, 7vw, 80px); line-height: 1.05; margin: 0 0 14px; background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 45%, #a5f3fc 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .subtitle { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); max-width: 52ch; }
+
+    .cta { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { cursor: pointer; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text); padding: 12px 18px; border-radius: 14px; font-weight: 600; text-decoration: none; transition: transform .12s ease, box-shadow .2s ease; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent1), var(--accent2)); border-color: transparent; box-shadow: var(--glow); }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* —— Card —— */
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 22px; box-shadow: 0 8px 30px rgba(0,0,0,.24); }
+
+    .profile { display: grid; place-items: center; gap: 14px; padding: 26px; }
+    .avatar { width: 140px; height: 140px; border-radius: 20px; background: linear-gradient(135deg, var(--accent2), var(--accent1)); display: grid; place-items: center; font-weight: 800; font-size: 42px; color: #0b0f14; box-shadow: var(--glow); }
+    .name { font-size: 22px; font-weight: 700; letter-spacing: .4px; }
+    .tag { font-size: 14px; color: var(--muted); }
+
+    /* —— Sections —— */
+    section { padding: 52px 0; }
+    h2 { font-size: clamp(26px, 4vw, 34px); margin: 0 0 16px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+    .project { position: relative; overflow: hidden; }
+    .project .badge { position: absolute; top: 14px; left: 14px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid var(--border); font-size: 12px; }
+    .project h3 { margin: 8px 0 6px; font-size: 18px; }
+    .muted { color: var(--muted); font-size: 14px; }
+
+    footer { padding: 36px 0 26px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    /* —— Tiny flair —— */
+    .shine { position: relative; }
+    .shine::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.18) 50%, transparent 100%); transform: translateX(-100%); animation: shine 3s infinite; mix-blend-mode: overlay; }
+    @keyframes shine { 0% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+  </style>
+</head>
+<body>
+  <!-- Decorative background blobs -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true">SB</div>
+        <span>Swati&nbsp;Bajpai</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div>
+          <h1 class="title">Hi, I'm Swati Bajpai</h1>
+          <p class="subtitle">A clean, elegant, single‑page website with a beautiful, modern look. Customize the text, links, and project cards below to make it yours.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">See Projects</a>
+            <a class="btn" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <aside class="card profile">
+          <div class="avatar shine" aria-hidden="true">SB</div>
+          <div class="name">Swati Bajpai</div>
+          <div class="tag">Designer • Frontend Enthusiast</div>
+          <div class="cta">
+            <a class="btn" href="mailto:hello@example.com">Email</a>
+            <a class="btn" href="#">LinkedIn</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="card">
+          <h2>About</h2>
+          <p class="muted">I enjoy crafting simple, delightful interfaces. This template is a single HTML file—no frameworks—so you can edit it quickly and host anywhere.</p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+          <article class="card project">
+            <span class="badge">UI</span>
+            <h3>Glass Card</h3>
+            <p class="muted">Subtle glassmorphism card with soft shadows and hover lift.</p>
+          </article>
+          <article class="card project">
+            <span class="badge">Web</span>
+            <h3>Responsive Grid</h3>
+            <p class="muted">Adaptive 1–3 column layout that looks great on any screen.</p>
+          </article>
+          <article class="card project">
+            <span class="badge">Brand</span>
+            <h3>Gradient Identity</h3>
+            <p class="muted">Violet–cyan gradient system used across buttons and accents.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="card">
+          <h2>Contact</h2>
+          <p class="muted">Want to say hi or collaborate? Drop a message:</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks, your message was captured for demo!');" style="display:grid; gap:12px; grid-template-columns:1fr 1fr;">
+            <input class="card" style="padding:12px;" placeholder="Your name" required>
+            <input class="card" style="padding:12px;" type="email" placeholder="Email" required>
+            <textarea class="card" style="padding:12px; grid-column:1/-1; min-height:110px;" placeholder="Message" required></textarea>
+            <button class="btn primary" style="width:max-content;">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Swati Bajpai • Built with ♥
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
