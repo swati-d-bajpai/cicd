@@ -23,7 +23,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.C2_SSH_KEY }}
           port: 22
           source: ./
           target: /home/ubuntu
@@ -33,7 +33,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.C2_SSH_KEY }}
           port: 22
           script: |
             sudo cp /home/ubuntu/* /var/www/html
